@@ -1,0 +1,16 @@
+{
+	"ensure_newline_at_eof_on_save": true,
+	"font_size": 15,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		80,
+		100
+	],
+	"tab_size": 2,
+	"word_wrap": "auto",
+	"wrap_width": 100
+}
