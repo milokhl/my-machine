@@ -15,3 +15,20 @@ sudo apt-get update
 sudo apt-get install indicator-multiload
 ```
 
+## Git Setup
+```
+git config --global user.name "Milo Knowles"
+git config --global user.email "mknowles@mit.edu"
+git config --global push.default simple
+```
+
+## Apt Packages
+```
+sudo apt install git
+```
+
+## Terminator
+Solarized dark color, infinite scrollback.
+```
+cp terminal/terminator-config ~/.config/terminator/config
+```
