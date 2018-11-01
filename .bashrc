@@ -122,3 +122,11 @@ alias gitlog='git log --decorate --oneline --graph'
 # Virtualenvwrapper stuff.
 export WORKON_HOME=~/envs
 source ~/.local/bin/virtualenvwrapper.sh
+
+# ROS stuff.
+alias srcrrgdep='source ~/rrg/dependencies/setup.sh'
+alias srcros='source /opt/ros/kinetic/setup.bash'
+alias srcrrg='source ~/rrg/devel/setup.bash'
+
+srcros
+srcrrgdep
