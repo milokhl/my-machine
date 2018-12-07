@@ -1,5 +1,7 @@
-# my-machine
+# Ubuntu Setup
 Setup for my Ubuntu environment.
+
+Dell XPS 156 4K Ultra HD TouchScreen Laptop Intel Core i7 16GB Memory NVIDIA GeForce GTX 1050 512GB SSD Silver
 
 ## Sublime Text 3
 Copy stuff from ```sublime/``` into ```~/.config/sublime-text-3/Packages/User/```
@@ -87,9 +89,12 @@ export PATH="$PATH:$HOME/bin" # Add to .bashrc
 # Install Tensorflow.
 git clone https://github.com/tensorflow/tensorflow.git
 cd tensorflow
-git checkout r1.12 # Checkout desired release.
+
+# Use release 1.10: https://github.com/tensorflow/tensorflow/issues/23200
+git checkout r1.10 # Checkout desired release.
 
 # This took a long time.
+# It should be fine to skip it.
 bazel test -c opt -- //tensorflow/... -//tensorflow/compiler/... -//tensorflow/contrib/lite/...
 
 # Make sure the cuDNN libraries are copied into the cuda install dir.
@@ -101,8 +106,18 @@ sudo cp /usr/lib/x86_64-linux-gnu/libcudnn.so.7 /usr/local/cuda/lib64/
 # Do you want to use clang as CUDA compiler? [y/N]: n
 ./configure
 
+# This builds an executable to build the wheel.
 bazel build --config=opt --config=cuda //tensorflow/tools/pip_package:build_pip_package
 
+# This build the wheel.
+./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg
+
 # Install with pip (make sure you're in virtualenv).
-pip install /tmp/tensorflow_pkg/tensorflow-version-tags.whl
+pip install /tmp/tensorflow_pkg/tensorflow-1.10.1-cp35-cp35m-linux_x86_64.whl
+```
+
+Check for GPU support in Python:
+```python
+import tensorflow as tf
+sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 ```
