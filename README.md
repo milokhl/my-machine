@@ -121,3 +121,15 @@ Check for GPU support in Python:
 import tensorflow as tf
 sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 ```
+
+# Useful commands
+```bash
+# Delete all OpenCV4 libraries in current directory
+find . -name 'libopencv*.4.0*' -print0 | xargs -0 rm -rf
+```
+
+# Where is stuff?
+```bash
+# Cmake package config stuff
+/usr/local/lib/cmake/
+```
