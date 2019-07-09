@@ -130,3 +130,7 @@ alias srcrrg='source ~/rrg/devel/setup.bash'
 
 srcros
 srcrrgdep
+
+# For dealing with giant compile errors.
+alias line="printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -"
+alias divide="line && line && line"
